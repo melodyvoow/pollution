@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:pollution/view/Home/pollution_home_view.dart';
 import 'package:pollution/view/component/pollution_appbar.dart';
 import 'package:pollution/view/component/pollution_button.dart';
 import 'package:pollution/view/component/pollution_typography.dart';
@@ -55,7 +56,19 @@ class _PollutionIntroViewState extends State<PollutionIntroView> {
                 buttonTextStyle: PollutionTextStyle.p18_w700.copyWith(
                   color: Colors.white,
                 ),
-                onPress: () {},
+                onPress: () {
+                  Navigator.of(context).push(
+                    PageRouteBuilder(
+                      transitionDuration: const Duration(milliseconds: 650),
+                      pageBuilder: (context, animation, _) {
+                        return FadeTransition(
+                          opacity: animation,
+                          child: PollutionHomeView(),
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
               const SizedBox(
                 height: 60,
