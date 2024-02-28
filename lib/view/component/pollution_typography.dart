@@ -53,6 +53,7 @@ class PollutionTextStyle {
   // ignore: constant_identifier_names
   static const TextStyle g40_w700 = TextStyle(
     fontFamily: 'Good-Timing-W00',
+    height: 1.2,
     fontSize: 40,
     fontWeight: _w700,
   );
@@ -287,6 +288,229 @@ class PollutionTextStyle {
   // ignore: constant_identifier_names
   static const TextStyle g12_w700 = TextStyle(
     fontFamily: 'Good-Timing-W00',
+    fontSize: 12,
+    fontWeight: _w700,
+  );
+
+  // ignore: constant_identifier_names
+  static const TextStyle p40_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 40,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p32_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 32,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p32_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 32,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p32_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 32,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p32_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 32,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p30_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 30,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p30_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 30,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p30_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 30,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p30_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 30,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p28_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 28,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p28_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 28,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p28_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 28,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p28_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 28,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p24_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 24,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p24_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 24,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p24_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 24,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p24_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 24,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p20_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 20,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p20_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 20,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p20_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 20,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p20_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 20,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p18_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 18,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p18_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 18,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p18_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 18,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p18_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 18,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p16_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 16,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p16_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 16,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p16_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 16,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p16_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 16,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p14_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 14,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p14_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 14,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p14_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 14,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p14_w700 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 14,
+    fontWeight: _w700,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p12_w400 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 12,
+    fontWeight: _w400,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p12_w500 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 12,
+    fontWeight: _w500,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p12_w600 = TextStyle(
+    fontFamily: 'Pretendard',
+    fontSize: 12,
+    fontWeight: _w600,
+  );
+  // ignore: constant_identifier_names
+  static const TextStyle p12_w700 = TextStyle(
+    fontFamily: 'Pretendard',
     fontSize: 12,
     fontWeight: _w700,
   );
