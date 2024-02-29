@@ -55,9 +55,9 @@ class PollutionAppbarBackground extends StatelessWidget
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      surfaceTintColor: Theme.of(context).colorScheme.background,
-      shadowColor: Theme.of(context).colorScheme.background,
+      backgroundColor: Colors.transparent,
+      surfaceTintColor: Colors.transparent,
+      shadowColor: Colors.transparent,
       elevation: 0,
       iconTheme: const IconThemeData(
         color: Colors.white,
@@ -66,7 +66,7 @@ class PollutionAppbarBackground extends StatelessWidget
         children: [
           Text(
             appBarTitle,
-            style: PollutionTextStyle.g18_w500.copyWith(
+            style: PollutionTextStyle.g18_w600.copyWith(
               color: Colors.white,
             ),
           ),

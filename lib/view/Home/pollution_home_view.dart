@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pollution/view/Home/component/pollution_home_card.dart';
-import 'package:pollution/view/Home/pollution_home_detail_view.dart';
 import 'package:pollution/view/World/pollution_world_view.dart';
 import 'package:pollution/view/component/pollution_button.dart';
 import 'package:pollution/view/component/pollution_colors.dart';
@@ -15,13 +14,27 @@ class PollutionHomeView extends StatefulWidget {
 }
 
 class _PollutionHomeViewState extends State<PollutionHomeView> {
+  List<String> cityTitle = [
+    "Neonshadow Harbor",
+    "Silentpeak Valley",
+    "Twilightforge Metropolis",
+    "Echofall Enclave",
+    "Mirageflame City",
+    "Duskhaven Capital",
+    "Starlight Basin",
+    "Frostfire Borough",
+    "Sunfade City",
+  ];
+
   void _makeNewCharacter() {}
 
-  void _viewCharacterDetail() {
+  void _viewCharacterDetail(index) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PollutionWorldView(),
+        builder: (context) => PollutionWorldView(
+          appBarTitle: cityTitle.elementAt(index),
+        ),
       ),
     );
   }
@@ -61,7 +74,7 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
                     itemBuilder: (BuildContext context, int index) {
                       return PollutionHomeCard(
                         onPress: () {
-                          _viewCharacterDetail();
+                          _viewCharacterDetail(index);
                         },
                       );
                     },
