@@ -26,8 +26,12 @@ class FirecatPollutionFlameMain extends FlameGame
   Vector2 viewMaxSize;
 
   FirecatPollutionPlayer player = FirecatPollutionPlayer();
-  final HashMap<String, FirecatPollutionEnemy> hashMapEnemy = HashMap();
-  int countEnemy = 30;
+  final HashMap<String, FirecatPollutionEnemy> _hashMapEnemy = HashMap();
+  int _countEnemy = 10;
+  List<ParallaxComponent> _cloudXLList = [];
+  List<ParallaxComponent> _cloudLList = [];
+  List<ParallaxComponent> _cloudMList = [];
+  List<ParallaxComponent> _cloudSList = [];
 
   TextComponent loadingText = TextComponent(
       priority: 100,
@@ -165,6 +169,7 @@ class FirecatPollutionFlameMain extends FlameGame
     //     }));
 
     List<Vector2> vectorDataList = [];
+
     debugPrint('worldMaxSize: $worldMaxSize viewMaxSize: $viewMaxSize');
 
     for (double x = 0; x <= worldMaxSize.x; x += viewMaxSize.x) {
@@ -176,7 +181,8 @@ class FirecatPollutionFlameMain extends FlameGame
     debugPrint('vectorDataList: $vectorDataList');
 
     for (var element in vectorDataList) {
-      world.add(await loadParallaxComponent(
+      ParallaxComponent<FlameGame<World>> elementXL =
+          await loadParallaxComponent(
         [
           ParallaxImageData('cloud_XL.png'),
         ],
@@ -184,9 +190,12 @@ class FirecatPollutionFlameMain extends FlameGame
         velocityMultiplierDelta: Vector2(1.8, 1.0),
         repeat: ImageRepeat.repeat,
         position: element,
-      ));
+      );
+      world.add(elementXL);
+      _cloudXLList.add(elementXL);
 
-      world.add(await loadParallaxComponent(
+      ParallaxComponent<FlameGame<World>> elementL =
+          await loadParallaxComponent(
         [
           ParallaxImageData('cloud_L.png'),
         ],
@@ -194,9 +203,12 @@ class FirecatPollutionFlameMain extends FlameGame
         velocityMultiplierDelta: Vector2(1.8, 1.0),
         repeat: ImageRepeat.repeat,
         position: element,
-      ));
+      );
+      world.add(elementL);
+      _cloudLList.add(elementL);
 
-      world.add(await loadParallaxComponent(
+      ParallaxComponent<FlameGame<World>> elementM =
+          await loadParallaxComponent(
         [
           ParallaxImageData('cloud_M.png'),
         ],
@@ -204,9 +216,12 @@ class FirecatPollutionFlameMain extends FlameGame
         velocityMultiplierDelta: Vector2(1.8, 1.0),
         repeat: ImageRepeat.repeat,
         position: element,
-      ));
+      );
+      world.add(elementM);
+      _cloudMList.add(elementM);
 
-      world.add(await loadParallaxComponent(
+      ParallaxComponent<FlameGame<World>> elementS =
+          await loadParallaxComponent(
         [
           ParallaxImageData('cloud_S.png'),
         ],
@@ -214,14 +229,16 @@ class FirecatPollutionFlameMain extends FlameGame
         velocityMultiplierDelta: Vector2(1.8, 1.0),
         repeat: ImageRepeat.repeat,
         position: element,
-      ));
+      );
+      world.add(elementS);
+      _cloudSList.add(elementS);
     }
 
     initEnemy();
   }
 
   Future<void> initEnemy() async {
-    for (int i = 0; i < countEnemy; i++) {
+    for (int i = 0; i < _countEnemy; i++) {
       int moveX = Random().nextInt(worldMaxSize.x.toInt() - 200) + 100;
       int moveY = Random().nextInt(worldMaxSize.y.toInt() - 200) + 200;
 
@@ -241,7 +258,7 @@ class FirecatPollutionFlameMain extends FlameGame
                 : 0.08,
       );
 
-      hashMapEnemy[i.toString()] = pollutionEnemy;
+      _hashMapEnemy[i.toString()] = pollutionEnemy;
 
       world.add(pollutionEnemy
         ..add(
@@ -262,7 +279,7 @@ class FirecatPollutionFlameMain extends FlameGame
         period: 1,
         repeat: true,
         onTick: () {
-          hashMapEnemy.forEach((key, element) {
+          _hashMapEnemy.forEach((key, element) {
             element.move(Vector2(Random().nextInt(120) - 60.toDouble(),
                 Random().nextInt(120) - 60.toDouble()));
           });
@@ -271,18 +288,45 @@ class FirecatPollutionFlameMain extends FlameGame
 
   Future<void> delCUEnemy(String idEnemy) async {
     world.add(FirecatPollutionKilledEnemy(
-        position: hashMapEnemy[idEnemy]!.position,
+        position: _hashMapEnemy[idEnemy]!.position,
         size: Vector2(150, 150),
         imagePath: 'slimekill.png'));
 
-    hashMapEnemy.forEach((key, value) {
+    _hashMapEnemy.forEach((key, value) {
       if (key.compareTo(idEnemy) == 0) {
         world.remove(value);
       }
     });
 
-    hashMapEnemy.remove(idEnemy);
-    countEnemy = hashMapEnemy.length;
+    _hashMapEnemy.remove(idEnemy);
+    _countEnemy = _hashMapEnemy.length;
+
+    switch (_countEnemy) {
+      case 8:
+        debugPrint('countEnemy: $_countEnemy');
+        for (var element in _cloudXLList) {
+          world.remove(element);
+        }
+
+        break;
+      case 5:
+        for (var element in _cloudLList) {
+          world.remove(element);
+        }
+        debugPrint('countEnemy: $_countEnemy');
+        break;
+      case 3:
+        for (var element in _cloudMList) {
+          world.remove(element);
+        }
+        debugPrint('countEnemy: $_countEnemy');
+        break;
+      case 0:
+        for (var element in _cloudSList) {
+          world.remove(element);
+        }
+        debugPrint('countEnemy: $_countEnemy');
+    }
   }
 
   Future<void> initGun(Vector2 center, Vector2 direction) async {

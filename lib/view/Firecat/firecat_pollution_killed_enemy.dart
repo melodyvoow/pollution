@@ -17,7 +17,6 @@ class FirecatPollutionKilledEnemy extends SpriteAnimationComponent
   });
 
   String imagePath;
-  bool isCoin = false;
   @override
   Future<void> onLoad() async {
     priority = 2;
@@ -52,14 +51,6 @@ class FirecatPollutionKilledEnemy extends SpriteAnimationComponent
   }
 
   // 170 * 5
-
-  bool getCoin() {
-    if (isCoin) {
-      removeFromParent();
-      return true;
-    }
-    return false;
-  }
 
   @override
   void update(double dt) {
