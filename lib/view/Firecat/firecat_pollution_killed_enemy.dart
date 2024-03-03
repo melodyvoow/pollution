@@ -22,9 +22,9 @@ class FirecatPollutionKilledEnemy extends SpriteAnimationComponent
   Future<void> onLoad() async {
     priority = 2;
 
-    final image = gameRef.images.fromCache(imagePath);
+    final image = await gameRef.loadSprite(imagePath);
     animation = SpriteAnimation.fromFrameData(
-        image,
+        image.image,
         SpriteAnimationData.sequenced(
           amount: 2,
           textureSize: Vector2(200, 200),
@@ -37,17 +37,17 @@ class FirecatPollutionKilledEnemy extends SpriteAnimationComponent
         period: 1.5,
         repeat: false,
         onTick: () {
-          //        removeFromParent();
-          isCoin = true;
-          final image = gameRef.images.fromCache('coin.png');
-          size = Vector2(80, 80);
-          animation = SpriteAnimation.fromFrameData(
-              image,
-              SpriteAnimationData.sequenced(
-                amount: 5,
-                textureSize: Vector2(150, 150),
-                stepTime: 0.2,
-              ));
+          removeFromParent();
+          // isCoin = true;
+          // final image = gameRef.images.fromCache('coin.png');
+          // size = Vector2(80, 80);
+          // animation = SpriteAnimation.fromFrameData(
+          //     image,
+          //     SpriteAnimationData.sequenced(
+          //       amount: 5,
+          //       textureSize: Vector2(150, 150),
+          //       stepTime: 0.2,
+          //     ));
         }));
   }
 

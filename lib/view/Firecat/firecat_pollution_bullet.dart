@@ -44,8 +44,8 @@ class FirecatPollutionBullet extends SpriteComponent
     super.onCollisionStart(intersectionPoints, other);
 
     if (other is FirecatPollutionEnemy) {
-      FirecatPollutionEnemy crewslimeEnemy = other;
-      crewslimeEnemy.attack();
+      FirecatPollutionEnemy pollutionEnemy = other;
+      pollutionEnemy.attack();
       removeFromParent();
       return;
     }

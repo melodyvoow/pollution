@@ -9,6 +9,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/particles.dart';
 import 'package:flame/sprite.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
 import 'firecat_pollution_main.dart';
@@ -34,7 +35,6 @@ class FirecatPollutionEnemy extends SpriteAnimationComponent
   double _speedY = 0;
   int energy = 5;
 
-  late final SpriteAnimation _runAnimation;
   late RectangleComponent enegyComponent;
 
   Future<void> _setTextCrew() async {
@@ -65,18 +65,16 @@ class FirecatPollutionEnemy extends SpriteAnimationComponent
 
     _dest = Vector2(0, 0);
 
-    final spriteSheet = SpriteSheet(
-      image: await gameRef.images.load(imagePath),
-      srcSize: imageSize,
-    );
+    final image = await gameRef.loadSprite(imagePath);
 
-    _runAnimation = spriteSheet.createAnimation(
-      row: 0,
-      stepTime: 0.2,
-      to: spriteNum,
-    );
-
-    animation = _runAnimation;
+    animation = SpriteAnimation.fromFrameData(
+        image.image,
+        SpriteAnimationData.sequenced(
+          amount: 5,
+          textureSize: imageSize,
+          stepTime: 1,
+          loop: true,
+        ));
 
     add(CircleHitbox());
 
@@ -87,21 +85,19 @@ class FirecatPollutionEnemy extends SpriteAnimationComponent
   void update(double dt) {
     super.update(dt);
 
-    // if (_speedX > 0) {
-    //   if (position.x + _speedX > _dest.x) {
-    //     position.x = _dest.x;
-    //   } else {
-    //     position.add(Vector2(_speedX, 0));
-    //   }
-    //   animation = _runLeftAnimation;
-    // } else {
-    //   if (position.x + _speedX < _dest.x) {
-    //     position.x = _dest.x;
-    //   } else {
-    //     position.add(Vector2(_speedX, 0));
-    //   }
-    //   animation = _runRightAnimation;
-    // }
+    if (_speedX > 0) {
+      if (position.x + _speedX > _dest.x) {
+        position.x = _dest.x;
+      } else {
+        position.add(Vector2(_speedX, 0));
+      }
+    } else {
+      if (position.x + _speedX < _dest.x) {
+        position.x = _dest.x;
+      } else {
+        position.add(Vector2(_speedX, 0));
+      }
+    }
 
     if (_speedY > 0) {
       if (position.y + _speedY > _dest.y) {

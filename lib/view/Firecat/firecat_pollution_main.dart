@@ -138,8 +138,6 @@ class FirecatPollutionFlameMain extends FlameGame
   Future<void> onLoad() async {
     super.onLoad();
 
-    await images.load('monster1_sprite.png');
-
     await images.load('coin.png');
     await images.load('boom.png');
 
@@ -158,8 +156,9 @@ class FirecatPollutionFlameMain extends FlameGame
       ..position = Vector2(300, 300));
 
 //    camera.follow(player);
+    // add(loadingText..anchor = Anchor.center);
     // add(TimerComponent(
-    //     period: 10,
+    //     period: 2,
     //     repeat: false,
     //     onTick: () {
     //       remove(loadingText);
@@ -226,12 +225,14 @@ class FirecatPollutionFlameMain extends FlameGame
       int moveX = Random().nextInt(worldMaxSize.x.toInt() - 200) + 100;
       int moveY = Random().nextInt(worldMaxSize.y.toInt() - 200) + 200;
 
+      debugPrint('moveX: $moveX moveY: $moveY');
+
       FirecatPollutionEnemy pollutionEnemy = FirecatPollutionEnemy(
         position: Vector2(moveX.toDouble(), moveY.toDouble()),
-        size: Vector2(250, 250),
+        size: Vector2(150, 150),
         enemyId: i.toString(),
         imagePath: 'monster1_sprite.png',
-        imageSize: Vector2(200.0, 200.0),
+        imageSize: Vector2(250.0, 250.0),
         spriteNum: 5,
         spriteSpeed: i % 3 == 0
             ? 0.2
@@ -242,7 +243,7 @@ class FirecatPollutionFlameMain extends FlameGame
 
       hashMapEnemy[i.toString()] = pollutionEnemy;
 
-      add(pollutionEnemy
+      world.add(pollutionEnemy
         ..add(
           OpacityEffect.fadeOut(
             EffectController(
@@ -269,14 +270,14 @@ class FirecatPollutionFlameMain extends FlameGame
   }
 
   Future<void> delCUEnemy(String idEnemy) async {
-    add(FirecatPollutionKilledEnemy(
+    world.add(FirecatPollutionKilledEnemy(
         position: hashMapEnemy[idEnemy]!.position,
         size: Vector2(150, 150),
         imagePath: 'slimekill.png'));
 
     hashMapEnemy.forEach((key, value) {
       if (key.compareTo(idEnemy) == 0) {
-        remove(value);
+        world.remove(value);
       }
     });
 
@@ -285,7 +286,7 @@ class FirecatPollutionFlameMain extends FlameGame
   }
 
   Future<void> initGun(Vector2 center, Vector2 direction) async {
-    add(FirecatPollutionBullet(position: center, direction: direction));
+    world.add(FirecatPollutionBullet(position: center, direction: direction));
   }
 }
 
