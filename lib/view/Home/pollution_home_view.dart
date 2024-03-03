@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pollution/view/Home/component/pollution_home_card.dart';
 import 'package:pollution/view/World/pollution_world_view.dart';
-import 'package:pollution/view/component/pollution_button.dart';
-import 'package:pollution/view/component/pollution_colors.dart';
-import 'package:pollution/view/component/pollution_input_dialog.dart';
-import 'package:pollution/view/component/pollution_typography.dart';
 
 class PollutionHomeView extends StatefulWidget {
   const PollutionHomeView({super.key});
@@ -47,7 +43,7 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
       body: Container(
         width: width,
         height: height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
               'assets/images/pollution_bg.jpeg',
@@ -56,13 +52,13 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
           ),
         ),
         child: Center(
-          child: Container(
+          child: SizedBox(
             width: width,
             height: width,
             child: CustomScrollView(
               slivers: [
                 SliverPadding(
-                  padding: EdgeInsets.all(4),
+                  padding: const EdgeInsets.all(4),
                   sliver: SliverGrid.builder(
                     gridDelegate:
                         const SliverGridDelegateWithMaxCrossAxisExtent(

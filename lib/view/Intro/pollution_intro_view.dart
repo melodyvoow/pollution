@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:pollution/view/Home/pollution_home_view.dart';
-import 'package:pollution/view/component/pollution_appbar.dart';
 import 'package:pollution/view/component/pollution_button.dart';
 import 'package:pollution/view/component/pollution_typography.dart';
 
@@ -22,7 +21,7 @@ class _PollutionIntroViewState extends State<PollutionIntroView> {
       body: Container(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
               'assets/images/map_destroyed_forest.jpg',
@@ -63,7 +62,7 @@ class _PollutionIntroViewState extends State<PollutionIntroView> {
                       pageBuilder: (context, animation, _) {
                         return FadeTransition(
                           opacity: animation,
-                          child: PollutionHomeView(),
+                          child: const PollutionHomeView(),
                         );
                       },
                     ),

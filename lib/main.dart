@@ -2,7 +2,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:pollution/firebase_options.dart';
-import 'package:pollution/view/Intro/pollution_intro_view.dart';
 
 import 'view/Firecat/firecat_pollution_main.dart';
 

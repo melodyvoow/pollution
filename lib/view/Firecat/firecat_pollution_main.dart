@@ -28,10 +28,10 @@ class FirecatPollutionFlameMain extends FlameGame
   FirecatPollutionPlayer player = FirecatPollutionPlayer();
   final HashMap<String, FirecatPollutionEnemy> _hashMapEnemy = HashMap();
   int _countEnemy = 10;
-  List<ParallaxComponent> _cloudXLList = [];
-  List<ParallaxComponent> _cloudLList = [];
-  List<ParallaxComponent> _cloudMList = [];
-  List<ParallaxComponent> _cloudSList = [];
+  final List<ParallaxComponent> _cloudXLList = [];
+  final List<ParallaxComponent> _cloudLList = [];
+  final List<ParallaxComponent> _cloudMList = [];
+  final List<ParallaxComponent> _cloudSList = [];
 
   TextComponent loadingText = TextComponent(
       priority: 100,

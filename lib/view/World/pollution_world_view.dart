@@ -20,7 +20,7 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
 
   void startTimer() {
     _timer = Timer.periodic(
-      Duration(seconds: 1),
+      const Duration(seconds: 1),
       (Timer timer) {
         if (_start == 0) {
           setState(() {
@@ -45,7 +45,7 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 56,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.black,
       ),
       child: Row(
@@ -73,7 +73,7 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
               begin: Alignment.centerLeft,
               end: Alignment.centerRight,
             ).createShader(bounds),
-            child: Text('Kill the Monster as Many as Possible',
+            child: const Text('Kill the Monster as Many as Possible',
                 style: PollutionTextStyle.p16_w700),
           ),
         ],
@@ -143,7 +143,7 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PollutionAppbarBackground(
-        appBarActions: [],
+        appBarActions: const [],
         appBarTitle: widget.appBarTitle,
         appBarHeight: 56,
       ),

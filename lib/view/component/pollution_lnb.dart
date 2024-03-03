@@ -22,7 +22,7 @@ class _PollutionLNBState extends State<PollutionLNB> {
     return Container(
       width: 300,
       height: MediaQuery.of(context).size.height,
-      color: Color(0xff171D22),
+      color: const Color(0xff171D22),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

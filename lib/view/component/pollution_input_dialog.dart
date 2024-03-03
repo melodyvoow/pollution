@@ -51,7 +51,7 @@ class _PollutionInputDialogState extends State<PollutionInputDialog> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Row(
+              const Row(
                 children: [
                   Text(
                     '내용을 입력하세요.',
@@ -63,7 +63,7 @@ class _PollutionInputDialogState extends State<PollutionInputDialog> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 16,
               ),
               TextFormField(
