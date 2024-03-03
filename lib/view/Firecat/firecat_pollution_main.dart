@@ -290,7 +290,7 @@ class FirecatPollutionFlameMain extends FlameGame
     world.add(FirecatPollutionKilledEnemy(
         position: _hashMapEnemy[idEnemy]!.position,
         size: Vector2(150, 150),
-        imagePath: 'slimekill.png'));
+        imagePath: 'monsterkill.png'));
 
     _hashMapEnemy.forEach((key, value) {
       if (key.compareTo(idEnemy) == 0) {

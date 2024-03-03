@@ -26,7 +26,7 @@ class FirecatPollutionKilledEnemy extends SpriteAnimationComponent
         image.image,
         SpriteAnimationData.sequenced(
           amount: 2,
-          textureSize: Vector2(200, 200),
+          textureSize: Vector2(250, 250),
           stepTime: 0.4,
         ));
 
