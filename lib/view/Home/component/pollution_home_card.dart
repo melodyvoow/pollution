@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:pollution/view/component/pollution_typography.dart';
 
 class PollutionHomeCard extends StatefulWidget {
-  const PollutionHomeCard({super.key, required this.onPress});
+  const PollutionHomeCard(
+      {super.key, required this.onPress, required this.gridImage});
 
   final Function() onPress;
+  final String gridImage;
 
   @override
   State<PollutionHomeCard> createState() => _PollutionHomeCardState();
@@ -21,7 +23,13 @@ class _PollutionHomeCardState extends State<PollutionHomeCard> {
         width: MediaQuery.of(context).size.width * 1 / 3,
         height: MediaQuery.of(context).size.width * 1 / 3,
         decoration: BoxDecoration(
-          color: Colors.white.withOpacity(0.3),
+          // color: Colors.white.withOpacity(0.1),
+          image: DecorationImage(
+            image: AssetImage(
+              widget.gridImage,
+            ),
+            fit: BoxFit.cover,
+          ),
         ),
         child: Center(
           child: Text(
