@@ -6,9 +6,17 @@ import 'package:pollution/view/component/pollution_colors.dart';
 import 'package:pollution/view/component/pollution_typography.dart';
 
 class PollutionWorldView extends StatefulWidget {
-  const PollutionWorldView({super.key, required this.appBarTitle});
+  const PollutionWorldView(
+      {super.key,
+      required this.appBarTitle,
+      required this.backgroundImagePath,
+      required this.monsterImagePath,
+      required this.killedMonsterImagePath});
 
   final String appBarTitle;
+  final String backgroundImagePath;
+  final String monsterImagePath;
+  final String killedMonsterImagePath;
 
   @override
   State<PollutionWorldView> createState() => _PollutionWorldViewState();
@@ -111,7 +119,7 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
   Widget build(BuildContext context) {
     double x = MediaQuery.of(context).size.width;
     double y = MediaQuery.of(context).size.height;
-    String displayTime = '03:00';
+    //String displayTime = '03:00';
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -129,7 +137,10 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
         child: Stack(
           children: [
             gameFirecatPollutionMainBuilder(
-                Vector2(x, y), 'map_cleaned_city.jpg'),
+                Vector2(x, y),
+                widget.backgroundImagePath,
+                widget.monsterImagePath,
+                widget.killedMonsterImagePath),
             Positioned(
               top: 56,
               child: _buildBanner(),

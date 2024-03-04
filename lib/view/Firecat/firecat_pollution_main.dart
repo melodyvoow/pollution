@@ -23,11 +23,16 @@ class FirecatPollutionFlameMain extends FlameGame
         ScaleDetector,
         DoubleTapDetector {
   FirecatPollutionFlameMain(
-      {required this.viewMaxSize, required this.backgroundImagePath});
+      {required this.viewMaxSize,
+      required this.backgroundImagePath,
+      required this.monsterImagePath,
+      required this.killedMonsterImagePath});
   int secMax = 300;
   Vector2 worldMaxSize = Vector2(2048, 2048);
   Vector2 viewMaxSize;
   String backgroundImagePath;
+  String monsterImagePath;
+  String killedMonsterImagePath;
 
   FirecatPollutionPlayer player = FirecatPollutionPlayer();
   final HashMap<String, FirecatPollutionEnemy> _hashMapEnemy = HashMap();
@@ -214,7 +219,6 @@ class FirecatPollutionFlameMain extends FlameGame
   Future<void> onLoad() async {
     super.onLoad();
 
-    await images.load('coin.png');
     await images.load('boom.png');
 
     FirecatPollutionBackground background = FirecatPollutionBackground();
@@ -321,7 +325,7 @@ class FirecatPollutionFlameMain extends FlameGame
         position: Vector2(moveX.toDouble(), moveY.toDouble()),
         size: Vector2(150, 150),
         enemyId: i.toString(),
-        imagePath: 'monster1_sprite.png',
+        imagePath: monsterImagePath,
         imageSize: Vector2(250.0, 250.0),
         spriteNum: 5,
         spriteSpeed: i % 3 == 0
@@ -363,7 +367,7 @@ class FirecatPollutionFlameMain extends FlameGame
     world.add(FirecatPollutionKilledEnemy(
         position: _hashMapEnemy[idEnemy]!.position,
         size: Vector2(150, 150),
-        imagePath: 'monsterkill.png'));
+        imagePath: killedMonsterImagePath));
 
     _hashMapEnemy.forEach((key, value) {
       if (key.compareTo(idEnemy) == 0) {
@@ -408,10 +412,16 @@ class FirecatPollutionFlameMain extends FlameGame
 }
 
 Widget gameFirecatPollutionMainBuilder(
-    Vector2 viewMaxSize, String backgroundImagePath) {
+    Vector2 viewMaxSize,
+    String backgroundImagePath,
+    String monsterImagePath,
+    String killedMonsterImagePath) {
   return GameWidget(
     game: FirecatPollutionFlameMain(
-        viewMaxSize: viewMaxSize, backgroundImagePath: backgroundImagePath),
+        viewMaxSize: viewMaxSize,
+        backgroundImagePath: backgroundImagePath,
+        monsterImagePath: monsterImagePath,
+        killedMonsterImagePath: killedMonsterImagePath),
     // overlayBuilderMap: {
     //   'OpenChat': (context, game) {
     //     return Positioned(

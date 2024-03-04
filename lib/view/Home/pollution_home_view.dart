@@ -26,6 +26,25 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
     "assets/images/grid_4.png",
   ];
 
+  List<String> mapImage = [
+    "map_01.jpg",
+    "map_02.jpg",
+    "map_03.jpg",
+    "map_04.jpg",
+  ];
+
+  List<String> monsterImage = [
+    "monster_01.png",
+    "monster_02.png",
+    "monster_03.png",
+    "monster_03.png",
+  ];
+  List<String> killedMonsterImage = [
+    "monster_01_killed.png",
+    "monster_02_killed.png",
+    "monster_03_killed.png",
+    "monster_03_killed.png",
+  ];
   void _makeNewCharacter() {}
 
   void _viewCharacterDetail(index) {
@@ -34,6 +53,9 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
       MaterialPageRoute(
         builder: (context) => PollutionWorldView(
           appBarTitle: cityTitle.elementAt(index),
+          backgroundImagePath: mapImage.elementAt(index),
+          monsterImagePath: monsterImage.elementAt(index),
+          killedMonsterImagePath: killedMonsterImage.elementAt(index),
         ),
       ),
     );
