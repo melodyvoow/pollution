@@ -27,7 +27,7 @@ class FirecatPollutionFlameMain extends FlameGame
       required this.backgroundImagePath,
       required this.monsterImagePath,
       required this.killedMonsterImagePath});
-  int secMax = 300;
+  int secMax = 180;
   Vector2 worldMaxSize = Vector2(2048, 2048);
   Vector2 viewMaxSize;
   String backgroundImagePath;
@@ -98,12 +98,18 @@ class FirecatPollutionFlameMain extends FlameGame
   @override
   void render(Canvas canvas) {
     super.render(canvas);
+
     _killedSlimeSec = (DateTime.now().microsecondsSinceEpoch -
             _startDateTime.microsecondsSinceEpoch) /
         1000000;
 
     killedSlimeText.textRenderer.render(
         canvas, "Monster : $_countEnemy", Vector2((viewMaxSize.x - 120), 130));
+
+    if (_countEnemy == 0) {
+      pauseEngine();
+      return;
+    }
 
     if (_killedSlimeSec < secMax) {
       int seconds = secMax - _killedSlimeSec.toInt();
