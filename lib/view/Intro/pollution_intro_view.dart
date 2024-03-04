@@ -24,7 +24,7 @@ class _PollutionIntroViewState extends State<PollutionIntroView> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/images/map_destroyed_forest.jpg',
+              'assets/images/map_01.jpg',
             ),
             fit: BoxFit.fitHeight,
           ),
