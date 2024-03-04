@@ -36,7 +36,7 @@ class FirecatPollutionFlameMain extends FlameGame
 
   FirecatPollutionPlayer player = FirecatPollutionPlayer();
   final HashMap<String, FirecatPollutionEnemy> _hashMapEnemy = HashMap();
-  int _countEnemy = 10;
+  int _countEnemy = 20;
   final List<ParallaxComponent> _cloudXLList = [];
   final List<ParallaxComponent> _cloudLList = [];
   final List<ParallaxComponent> _cloudMList = [];
@@ -379,20 +379,20 @@ class FirecatPollutionFlameMain extends FlameGame
     _countEnemy = _hashMapEnemy.length;
 
     switch (_countEnemy) {
-      case 8:
+      case 15:
         debugPrint('countEnemy: $_countEnemy');
         for (var element in _cloudXLList) {
           world.remove(element);
         }
 
         break;
-      case 5:
+      case 10:
         for (var element in _cloudLList) {
           world.remove(element);
         }
         debugPrint('countEnemy: $_countEnemy');
         break;
-      case 3:
+      case 5:
         for (var element in _cloudMList) {
           world.remove(element);
         }
