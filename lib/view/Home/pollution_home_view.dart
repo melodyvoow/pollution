@@ -37,13 +37,13 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
     "monster_01.png",
     "monster_02.png",
     "monster_03.png",
-    "monster_03.png",
+    "monster_04.png",
   ];
   List<String> killedMonsterImage = [
     "monster_01_killed.png",
     "monster_02_killed.png",
     "monster_03_killed.png",
-    "monster_03_killed.png",
+    "monster_04_killed.png",
   ];
   void _makeNewCharacter() {}
 
