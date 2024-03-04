@@ -37,6 +37,9 @@ class FirecatPollutionKilledEnemy extends SpriteAnimationComponent
         repeat: false,
         onTick: () {
           removeFromParent();
+          if (game.countEnemy == 0) {
+            gameRef.gameEnd();
+          }
           // isCoin = true;
           // final image = gameRef.images.fromCache('coin.png');
           // size = Vector2(80, 80);
