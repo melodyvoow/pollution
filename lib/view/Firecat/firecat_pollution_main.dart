@@ -22,6 +22,7 @@ class FirecatPollutionFlameMain extends FlameGame
         ScaleDetector,
         DoubleTapDetector {
   FirecatPollutionFlameMain({required this.viewMaxSize});
+  int secMax = 300;
   Vector2 worldMaxSize = Vector2(2048, 2048);
   Vector2 viewMaxSize;
 
@@ -47,8 +48,71 @@ class FirecatPollutionFlameMain extends FlameGame
           ],
         ),
       ))
-    ..anchor = Anchor.center
-    ..position = Vector2(100, 100);
+    ..anchor = Anchor.center;
+
+  TextComponent killedSlimeText = TextComponent(
+      priority: 100,
+      text: '000',
+      textRenderer: TextPaint(
+        style: TextStyle(
+          color: BasicPalette.black.color,
+          fontSize: 20.0,
+          fontFamily: 'Pretendard',
+          shadows: const [
+            Shadow(color: Colors.black45, offset: Offset(2, 2), blurRadius: 2),
+            Shadow(color: Colors.black26, offset: Offset(4, 4), blurRadius: 4),
+          ],
+        ),
+      ))
+    ..position = Vector2(20, 130);
+
+  TextComponent killedSlimeTimeText = TextComponent(
+      priority: 100,
+      text: '000',
+      textRenderer: TextPaint(
+        style: TextStyle(
+          color: BasicPalette.black.color,
+          fontSize: 20.0,
+          fontFamily: 'Pretendard',
+          shadows: const [
+            Shadow(color: Colors.black45, offset: Offset(2, 2), blurRadius: 2),
+            Shadow(color: Colors.black26, offset: Offset(4, 4), blurRadius: 4),
+          ],
+        ),
+      ))
+    ..position = Vector2(100, 130);
+
+  final DateTime _startDateTime = DateTime.now();
+  double _killedSlimeSec = 0;
+
+  @override
+  void update(double dt) {
+    super.update(dt);
+
+    _killedSlimeSec = (DateTime.now().microsecondsSinceEpoch -
+            _startDateTime.microsecondsSinceEpoch) /
+        1000000;
+
+    killedSlimeText.text = "Monster : $_countEnemy";
+    killedSlimeText.position =
+        Vector2(viewMaxSize.x - 120, 130) + camera.viewfinder.position;
+
+    if (_killedSlimeSec < secMax) {
+      int seconds = secMax - _killedSlimeSec.toInt();
+      int minutes = seconds ~/ 60;
+      int remainingSeconds = seconds % 60;
+
+      killedSlimeTimeText.text = "$minutes:$remainingSeconds";
+      killedSlimeTimeText.position =
+          Vector2(20, 130) + camera.viewfinder.position;
+    } else {
+      killedSlimeTimeText.text = "Completed";
+      killedSlimeTimeText.position =
+          Vector2(20, 130) + camera.viewfinder.position;
+      pauseEngine();
+    }
+    return;
+  }
 
   void clampZoom() {
     camera.viewfinder.zoom = camera.viewfinder.zoom.clamp(0.5, 2.5);
@@ -159,15 +223,6 @@ class FirecatPollutionFlameMain extends FlameGame
       ..size = Vector2(50, 50)
       ..position = Vector2(300, 300));
 
-//    camera.follow(player);
-    // add(loadingText..anchor = Anchor.center);
-    // add(TimerComponent(
-    //     period: 2,
-    //     repeat: false,
-    //     onTick: () {
-    //       remove(loadingText);
-    //     }));
-
     List<Vector2> vectorDataList = [];
 
     debugPrint('worldMaxSize: $worldMaxSize viewMaxSize: $viewMaxSize');
@@ -235,6 +290,16 @@ class FirecatPollutionFlameMain extends FlameGame
     }
 
     initEnemy();
+
+    world.add(killedSlimeTimeText);
+    world.add(killedSlimeText);
+    // add(loadingText..anchor = Anchor.center);
+    // add(TimerComponent(
+    //     period: 2,
+    //     repeat: false,
+    //     onTick: () {
+    //       remove(loadingText);
+    //     }));
   }
 
   Future<void> initEnemy() async {

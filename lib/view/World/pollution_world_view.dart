@@ -111,7 +111,7 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
 
   @override
   Widget build(BuildContext context) {
-     double x = MediaQuery.of(context).size.width;
+    double x = MediaQuery.of(context).size.width;
     double y = MediaQuery.of(context).size.height;
     String displayTime = '03:00';
 
@@ -135,17 +135,16 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
               top: 56,
               child: _buildBanner(),
             ),
-            Positioned(
-              top: 120,
-              left: 16,
-              child: _buildTimer(displayTime),
-            ),
-            Positioned(
-              top: 130,
-              right: 16,
-              child: _buildCount(),
-            ),
-
+            // Positioned(
+            //   top: 120,
+            //   left: 16,
+            //   child: _buildTimer(displayTime),
+            // ),
+            // Positioned(
+            //   top: 130,
+            //   right: 16,
+            //   child: _buildCount(),
+            // ),
           ],
         ),
       ),
