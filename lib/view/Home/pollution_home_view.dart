@@ -61,7 +61,7 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
             height: height,
             child: CustomScrollView(
               slivers: [
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: SizedBox(
                     height: 40,
                   ),
@@ -93,7 +93,7 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: SizedBox(
                     height: 16,
                   ),
@@ -107,7 +107,7 @@ class _PollutionHomeViewState extends State<PollutionHomeView> {
                     ),
                   ),
                 ),
-                SliverToBoxAdapter(
+                const SliverToBoxAdapter(
                   child: SizedBox(
                     height: 16,
                   ),

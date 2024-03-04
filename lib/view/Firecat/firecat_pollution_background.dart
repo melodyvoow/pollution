@@ -7,7 +7,7 @@ class FirecatPollutionBackground extends SpriteComponent
     with HasGameRef<FirecatPollutionFlameMain> {
   @override
   Future<void> onLoad() async {
-    sprite = await game.loadSprite('map_cleaned_city.jpg');
+    sprite = await game.loadSprite(game.backgroundImagePath);
     Rectangle bounds = Rectangle.fromLTRB(0, 0, 2048, 2048);
     game.camera.setBounds(bounds);
     game.worldMaxSize = Vector2(2048, 2048);

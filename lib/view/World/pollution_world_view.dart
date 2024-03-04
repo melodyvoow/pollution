@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:pollution/view/Firecat/firecat_pollution_main.dart';
 import 'package:flame/components.dart';
@@ -130,7 +128,8 @@ class _PollutionWorldViewState extends State<PollutionWorldView> {
         ),
         child: Stack(
           children: [
-            gameFirecatPollutionMainBuilder(Vector2(x, y)),
+            gameFirecatPollutionMainBuilder(
+                Vector2(x, y), 'map_cleaned_city.jpg'),
             Positioned(
               top: 56,
               child: _buildBanner(),

@@ -4,6 +4,7 @@ import 'dart:math';
 import 'package:flame/components.dart';
 import 'package:flame/effects.dart';
 import 'package:flame/events.dart';
+import 'package:flame/extensions.dart';
 import 'package:flame/game.dart';
 import 'package:flame/palette.dart';
 import 'package:flame/parallax.dart';
@@ -21,10 +22,12 @@ class FirecatPollutionFlameMain extends FlameGame
         ScrollDetector,
         ScaleDetector,
         DoubleTapDetector {
-  FirecatPollutionFlameMain({required this.viewMaxSize});
+  FirecatPollutionFlameMain(
+      {required this.viewMaxSize, required this.backgroundImagePath});
   int secMax = 300;
   Vector2 worldMaxSize = Vector2(2048, 2048);
   Vector2 viewMaxSize;
+  String backgroundImagePath;
 
   FirecatPollutionPlayer player = FirecatPollutionPlayer();
   final HashMap<String, FirecatPollutionEnemy> _hashMapEnemy = HashMap();
@@ -34,25 +37,25 @@ class FirecatPollutionFlameMain extends FlameGame
   final List<ParallaxComponent> _cloudMList = [];
   final List<ParallaxComponent> _cloudSList = [];
 
-  TextComponent loadingText = TextComponent(
-      priority: 100,
-      text: 'Loading...',
-      textRenderer: TextPaint(
-        style: TextStyle(
-          color: BasicPalette.white.color,
-          fontSize: 36.0,
-          fontFamily: 'Pretendard',
-          shadows: const [
-            Shadow(color: Colors.red, offset: Offset(2, 2), blurRadius: 2),
-            Shadow(color: Colors.yellow, offset: Offset(4, 4), blurRadius: 4),
-          ],
-        ),
-      ))
-    ..anchor = Anchor.center;
+  // TextComponent loadingText = TextComponent(
+  //     priority: 100,
+  //     text: 'Loading...',
+  //     textRenderer: TextPaint(
+  //       style: TextStyle(
+  //         color: BasicPalette.white.color,
+  //         fontSize: 36.0,
+  //         fontFamily: 'Pretendard',
+  //         shadows: const [
+  //           Shadow(color: Colors.red, offset: Offset(2, 2), blurRadius: 2),
+  //           Shadow(color: Colors.yellow, offset: Offset(4, 4), blurRadius: 4),
+  //         ],
+  //       ),
+  //     ))
+  //   ..anchor = Anchor.center;
 
   TextComponent killedSlimeText = TextComponent(
       priority: 100,
-      text: '000',
+      text: '',
       textRenderer: TextPaint(
         style: TextStyle(
           color: BasicPalette.black.color,
@@ -64,11 +67,12 @@ class FirecatPollutionFlameMain extends FlameGame
           ],
         ),
       ))
-    ..position = Vector2(20, 130);
+    ..position = Vector2(20, 130)
+    ..priority = 10;
 
   TextComponent killedSlimeTimeText = TextComponent(
       priority: 100,
-      text: '000',
+      text: '',
       textRenderer: TextPaint(
         style: TextStyle(
           color: BasicPalette.black.color,
@@ -80,39 +84,43 @@ class FirecatPollutionFlameMain extends FlameGame
           ],
         ),
       ))
-    ..position = Vector2(100, 130);
+    ..position = Vector2(100, 130)
+    ..priority = 10;
 
   final DateTime _startDateTime = DateTime.now();
   double _killedSlimeSec = 0;
 
   @override
-  void update(double dt) {
-    super.update(dt);
-
+  void render(Canvas canvas) {
+    super.render(canvas);
     _killedSlimeSec = (DateTime.now().microsecondsSinceEpoch -
             _startDateTime.microsecondsSinceEpoch) /
         1000000;
 
-    killedSlimeText.text = "Monster : $_countEnemy";
-    killedSlimeText.position =
-        Vector2(viewMaxSize.x - 120, 130) + camera.viewfinder.position;
+    killedSlimeText.textRenderer.render(
+        canvas, "Monster : $_countEnemy", Vector2((viewMaxSize.x - 120), 130));
 
     if (_killedSlimeSec < secMax) {
       int seconds = secMax - _killedSlimeSec.toInt();
       int minutes = seconds ~/ 60;
       int remainingSeconds = seconds % 60;
 
-      killedSlimeTimeText.text = "$minutes:$remainingSeconds";
-      killedSlimeTimeText.position =
-          Vector2(20, 130) + camera.viewfinder.position;
+      killedSlimeText.textRenderer.render(
+          canvas,
+          "$minutes:${remainingSeconds.toString().padLeft(2, '0')}",
+          Vector2(20, 130));
     } else {
-      killedSlimeTimeText.text = "Completed";
-      killedSlimeTimeText.position =
-          Vector2(20, 130) + camera.viewfinder.position;
+      killedSlimeText.textRenderer
+          .render(canvas, "Completed", Vector2(20, 130));
       pauseEngine();
     }
     return;
   }
+
+  // @override
+  // void update(double dt) {
+  //   super.update(dt);
+  // }
 
   void clampZoom() {
     camera.viewfinder.zoom = camera.viewfinder.zoom.clamp(0.5, 2.5);
@@ -399,9 +407,11 @@ class FirecatPollutionFlameMain extends FlameGame
   }
 }
 
-Widget gameFirecatPollutionMainBuilder(Vector2 viewMaxSize) {
+Widget gameFirecatPollutionMainBuilder(
+    Vector2 viewMaxSize, String backgroundImagePath) {
   return GameWidget(
-    game: FirecatPollutionFlameMain(viewMaxSize: viewMaxSize),
+    game: FirecatPollutionFlameMain(
+        viewMaxSize: viewMaxSize, backgroundImagePath: backgroundImagePath),
     // overlayBuilderMap: {
     //   'OpenChat': (context, game) {
     //     return Positioned(

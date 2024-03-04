@@ -1,10 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flame/components.dart';
 import 'package:flutter/material.dart';
 import 'package:pollution/firebase_options.dart';
 import 'package:pollution/view/Intro/pollution_intro_view.dart';
 
-import 'view/Firecat/firecat_pollution_main.dart';
 
 /*
 flutter run --web-renderer html canvaskit --dart-define=FLUTTER_WEB_USE_SKIA=true
@@ -79,7 +77,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: PollutionIntroView(),
     );
   }
